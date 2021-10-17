@@ -13,10 +13,6 @@ LDD_SITE = 'git@github.com:cu-ecen-aeld/assignment-7-rajatchaple.git'
 LDD_SITE_METHOD = git
 LDD_GIT_SUBMODULES = YES
 
-define AESD_ASSIGNMENTS_BUILD_CMDS
-  $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app clean
-endef
-
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
 define LDD__INSTALL_TARGET_CMDS
   $(INSTALL) -m 0755 $(@D)/misc-modules/module_load $(TARGET_DIR)/usr/bin
