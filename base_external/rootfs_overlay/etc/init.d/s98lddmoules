@@ -1,0 +1,22 @@
+#! /bin/sh
+#reference: coursera lecture slides
+
+case "$1" in
+    start)	
+    echo "Starting linux driver"
+        start-stop-daemon -S -n scull -a /etc/init.d/scull_load -- -d
+        start-stop-daemon -S -n module -a /etc/init.d/module_load -- -d
+        modprobe -v hello
+        ;;
+    stop)
+    echo "Stopping linux driver" 
+    start-stop-daemon -K -n scull
+    start-stop-daemon -K -n module
+    rmmod -v hello
+    ;;
+    *)
+         echo "Usage: $0 {start|stop}" 
+        exit 1 
+esac
+
+exit 0
